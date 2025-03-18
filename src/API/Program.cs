@@ -1,44 +1,35 @@
-WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+using Food.Endpoints;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-WebApplication? app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Add services to the container.
+
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    //builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
+    builder.Services.AddFoodEndpoints();
 }
 
-app.UseHttpsRedirection();
-
-string[]? summaries = new[]
+WebApplication app = builder.Build();
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
+    //app.MapEndpointsYes();
+    app.MapFoodEndpoints();
+// Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
     {
-        WeatherForecast[]? forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-app.Run();
+    app.UseHttpsRedirection();
 
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+    app.Run();
+}
+
+public partial class Program
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }

@@ -1,5 +1,18 @@
-﻿namespace Food.Endpoints;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using Shared.EndpointsConventions;
+using Shared.Extensions;
 
-public class Class1
+namespace Food.Endpoints;
+
+public class Class1 : IEndpoint
 {
+    public void MapEndpoint(IEndpointRouteBuilder app)
+    {
+        app.MapGet("/otro", () => "Hello World!")
+            .GetApiConvention<int>()
+            .WithTags("otro")
+            .WithName("GetOtro");
+    }
 }

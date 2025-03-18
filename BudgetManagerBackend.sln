@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Food.Unit.Tests", "tests\mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nutrient.Unit.Tests", "tests\modules.unit.tests\Nutrient.Unit.Tests\Nutrient.Unit.Tests.csproj", "{6C4B687D-23AA-4248-A624-C4541E5D644D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\shared\Shared\Shared.csproj", "{B7FF979B-9107-49D1-807A-D2C01F089F68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,7 @@ Global
 		{D65B51D2-4E9D-46F7-8F0F-F47C56EC1C0E} = {693C7164-9EF9-45E5-9777-79251F4C56B5}
 		{5B46CA65-84B5-4FCB-8E42-B3DC464ECE1D} = {A7EE22EA-502C-4AA7-AC22-BF7D756164DB}
 		{6C4B687D-23AA-4248-A624-C4541E5D644D} = {A7EE22EA-502C-4AA7-AC22-BF7D756164DB}
+		{B7FF979B-9107-49D1-807A-D2C01F089F68} = {81239AB5-6AE7-46C2-929F-3AB74322DA6F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D8824C63-5AC1-41DC-8970-1110952A163B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -155,5 +158,9 @@ Global
 		{6C4B687D-23AA-4248-A624-C4541E5D644D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C4B687D-23AA-4248-A624-C4541E5D644D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C4B687D-23AA-4248-A624-C4541E5D644D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7FF979B-9107-49D1-807A-D2C01F089F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FF979B-9107-49D1-807A-D2C01F089F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FF979B-9107-49D1-807A-D2C01F089F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FF979B-9107-49D1-807A-D2C01F089F68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
