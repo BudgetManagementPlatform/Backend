@@ -11,10 +11,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="shared.src\shared.application\"/>
-        <Folder Include="shared.src\shared.domain\"/>
-        <Folder Include="shared.src\shared.endpoints\"/>
-        <Folder Include="shared.src\shared.infrastructure\"/>
+        <Folder Include="food.src\food.application\"/>
+        <Folder Include="food.src\food.domain\"/>
+        <Folder Include="food.src\food.endpoints\"/>
+        <Folder Include="food.src\food.infrastructure\"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\shared\Shared\Shared.csproj"/>
+    </ItemGroup>
+
 
 </Project>

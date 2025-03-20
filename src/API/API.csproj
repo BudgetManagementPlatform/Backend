@@ -12,9 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\modules\food\Food.Endpoints\Food.Endpoints.csproj"/>
-        <ProjectReference Include="..\modules\nutrient\Nutrient.Endpoints\Nutrient.Endpoints.csproj"/>
-        <ProjectReference Include="..\modules\security\Security.Endpoints\Security.Endpoints.csproj"/>
+        <ProjectReference Include="..\modules\food\Food.Module\Food.Module.csproj"/>
+        <ProjectReference Include="..\modules\nutrient\Nutrient.Module\Nutrient.Module.csproj"/>
+        <ProjectReference Include="..\modules\security\Security.Module\Security.Module.csproj"/>
     </ItemGroup>
 
 </Project>

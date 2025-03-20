@@ -1,5 +1,3 @@
-using Food.Endpoints;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
 // Add services to the container.
@@ -10,14 +8,10 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     builder.Services.AddSwaggerGen();
 
     //builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
-
-    builder.Services.AddFoodEndpoints();
 }
 
 WebApplication app = builder.Build();
 {
-    //app.MapEndpointsYes();
-    app.MapFoodEndpoints();
 // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
