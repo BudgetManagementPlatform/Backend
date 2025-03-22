@@ -14,4 +14,11 @@
         <ProjectReference Include="..\..\..\shared\Shared\Shared.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="security.src\security.application\"/>
+        <Folder Include="security.src\security.domain\"/>
+        <Folder Include="security.src\security.endpoints\"/>
+        <Folder Include="security.src\security.infrastructure\"/>
+    </ItemGroup>
+
 </Project>

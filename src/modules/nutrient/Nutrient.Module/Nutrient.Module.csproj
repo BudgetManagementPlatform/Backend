@@ -14,4 +14,11 @@
         <ProjectReference Include="..\..\..\shared\Shared\Shared.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="nutrient.src\nutrient.application\"/>
+        <Folder Include="nutrient.src\nutrient.domain\"/>
+        <Folder Include="nutrient.src\nutrient.endpoints\"/>
+        <Folder Include="nutrient.src\nutrient.infrastructure\"/>
+    </ItemGroup>
+
 </Project>
