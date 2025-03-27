@@ -14,7 +14,6 @@
         <Folder Include="shared.src\shared.application\"/>
         <Folder Include="shared.src\shared.domain\"/>
         <Folder Include="shared.src\shared.endpoints\"/>
-        <Folder Include="shared.src\shared.infrastructure\"/>
     </ItemGroup>
 
 </Project>
