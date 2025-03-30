@@ -2,7 +2,6 @@ using System.Reflection;
 using API;
 using API.Extensions;
 using API.Infrastructure;
-using API.Infrastructure.EndpointsConventions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
@@ -32,7 +31,7 @@ WebApplication app = builder.Build();
         app.UseSwaggerUI();
     }
 
-    app.MapGet("/", () => { throw new Exception(); }).GetApiConvention<int>();
+    // app.MapGet("/", () => { throw new Exception(); }).GetApiConvention<int>();
 
     app.UseHttpsRedirection();
 

@@ -11,8 +11,9 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
         Exception exception,
         CancellationToken cancellationToken)
     {
-        logger.LogError(exception, "Unhandled exception occurred with TraceId {TraceIdentifier}",
-            httpContext.TraceIdentifier);
+        // TODO: Log the exception
+        // logger.LogError(exception, "Unhandled exception occurred with TraceId {TraceIdentifier}",
+        //     httpContext.TraceIdentifier);
 
         ProblemDetails problemDetails = new()
         {
