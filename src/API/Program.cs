@@ -1,24 +1,29 @@
-using Shared;
-using Shared.shared.src.shared.infrastructure;
+using System.Reflection;
+using API;
+using API.Extensions;
+using API.Infrastructure;
+using API.Infrastructure.EndpointsConventions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddSharedModule();
+    builder.Services.AddApi();
 
     // Add services to the container.
     builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
     builder.Services.AddProblemDetails();
 
+    builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-
-    //builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 }
 
 WebApplication app = builder.Build();
 {
-    app.UseSharedModule();
+    app.UseApi();
+
+    app.MapEndpoints();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -27,7 +32,7 @@ WebApplication app = builder.Build();
         app.UseSwaggerUI();
     }
 
-    app.MapGet("/", () => { throw new Exception(); });
+    app.MapGet("/", () => { throw new Exception(); }).GetApiConvention<int>();
 
     app.UseHttpsRedirection();
 

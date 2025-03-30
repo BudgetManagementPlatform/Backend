@@ -1,10 +1,8 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
+using API.Endpoints;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Shared.shared.src.shared.infrastructure.Extensions;
+namespace API.Extensions;
 
 public static class EndpointsExtension
 {

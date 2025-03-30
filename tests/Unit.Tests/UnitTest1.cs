@@ -1,4 +1,4 @@
-namespace NutrientModule.Unit.Tests;
+namespace Unit.Tests;
 
 public class UnitTest1
 {

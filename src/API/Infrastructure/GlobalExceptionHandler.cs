@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
-namespace Shared.shared.src.shared.infrastructure;
+namespace API.Infrastructure;
 
 public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler

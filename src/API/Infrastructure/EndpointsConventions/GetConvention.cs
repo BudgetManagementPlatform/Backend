@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Shared.shared.src.shared.infrastructure.EndpointsConventions;
+namespace API.Infrastructure.EndpointsConventions;
 
 public static class GetConvention
 {
