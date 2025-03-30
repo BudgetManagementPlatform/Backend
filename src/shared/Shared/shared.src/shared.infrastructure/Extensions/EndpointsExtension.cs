@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Shared.Extensions;
+namespace Shared.shared.src.shared.infrastructure.Extensions;
 
 public static class EndpointsExtension
 {

@@ -12,7 +12,7 @@
 
     <ItemGroup>
         <Folder Include="food.src\food.application\"/>
-        <Folder Include="food.src\food.domain\"/>
+        <Folder Include="food.src\food.domain\FoodAggregate\Entity\"/>
         <Folder Include="food.src\food.endpoints\"/>
         <Folder Include="food.src\food.infrastructure\"/>
     </ItemGroup>
