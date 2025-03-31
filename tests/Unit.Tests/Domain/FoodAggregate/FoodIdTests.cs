@@ -1,5 +1,7 @@
 using Domain.FoodAggregate.ValueObjects;
 
+namespace Unit.Tests.Domain.FoodAggregate;
+
 public class FoodIdTests
 {
     [Fact]
@@ -19,8 +21,9 @@ public class FoodIdTests
     [Fact]
     public void CreateUnique_ShouldReturnNewFoodId_WithUniqueGuid()
     {
-        FoodId foodId = FoodId.CreateUnique();
-        Assert.NotEqual(Guid.Empty, foodId.Value);
+        FoodId foodId1 = FoodId.CreateUnique();
+        FoodId foodId2 = FoodId.CreateUnique();
+        Assert.NotEqual(foodId2.Value, foodId1.Value);
     }
 
     [Fact]
