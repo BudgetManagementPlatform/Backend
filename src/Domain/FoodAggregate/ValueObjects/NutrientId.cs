@@ -3,31 +3,31 @@ using Domain.Common;
 namespace Domain.FoodAggregate.ValueObjects;
 
 /// <summary>
-///     Represents a unique identifier for a Food entity.
+///     Represents a unique identifier for a Nutrient entity.
 /// </summary>
-public sealed class FoodId : ValueObject
+public class NutrientId : ValueObject
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="FoodId" /> class.
+    ///     Initializes a new instance of the <see cref="NutrientId" /> class.
     /// </summary>
     /// <param name="id">The unique identifier.</param>
-    private FoodId(Guid id)
+    private NutrientId(Guid id)
     {
         Value = id;
     }
 
     /// <summary>
-    ///     Gets the value of the FoodId.
+    ///     Gets the value of the NutrientId.
     /// </summary>
     public Guid Value { get; }
 
     /// <summary>
-    ///     Creates a new instance of <see cref="FoodId" /> with a unique identifier.
+    ///     Creates a new instance of <see cref="NutrientId" /> with a unique identifier.
     /// </summary>
-    /// <returns>A new <see cref="FoodId" /> instance with a unique GUID.</returns>
-    public static FoodId CreateUnique()
+    /// <returns>A new <see cref="NutrientId" /> instance with a unique GUID.</returns>
+    public static NutrientId CreateUnique()
     {
-        return new FoodId(Guid.NewGuid());
+        return new NutrientId(Guid.NewGuid());
     }
 
     /// <summary>
