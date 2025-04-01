@@ -1,10 +1,13 @@
 using Domain.FoodAggregate.Entities;
 using Domain.FoodAggregate.ValueObjects;
+using NSubstitute;
 
 namespace Unit.Tests.Domain.FoodAggregate.Entities;
 
 public class NutrientTests
 {
+    private readonly TimeProvider _timeProvider = Substitute.For<TimeProvider>();
+
     [Fact]
     public void Created_ShouldReturnNewNutrient_WithGivenValues()
     {
@@ -13,7 +16,7 @@ public class NutrientTests
         NutritionalValue nutritionalValue = NutritionalValue.Created(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1);
-        Nutrient nutrient = Nutrient.Created(id, userId, nutritionalValue);
+        Nutrient nutrient = Nutrient.Created(id, userId, nutritionalValue, _timeProvider);
 
         Assert.Equal(id, nutrient.Id);
         Assert.Equal(userId, nutrient.EntityTimeStamp.CreatedById);
@@ -27,7 +30,7 @@ public class NutrientTests
         NutritionalValue nutritionalValue = NutritionalValue.Created(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1);
-        Assert.Throws<ArgumentException>(() => Nutrient.Created(Guid.Empty, userId, nutritionalValue));
+        Assert.Throws<ArgumentException>(() => Nutrient.Created(Guid.Empty, userId, nutritionalValue, _timeProvider));
     }
 
     [Fact]
@@ -37,7 +40,7 @@ public class NutrientTests
         NutritionalValue nutritionalValue = NutritionalValue.Created(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1);
-        Assert.Throws<ArgumentException>(() => Nutrient.Created(id, Guid.Empty, nutritionalValue));
+        Assert.Throws<ArgumentException>(() => Nutrient.Created(id, Guid.Empty, nutritionalValue, _timeProvider));
     }
 
     [Fact]
@@ -46,7 +49,7 @@ public class NutrientTests
         Guid id = Guid.NewGuid();
         Guid userId = Guid.NewGuid();
 
-        Assert.Throws<ArgumentNullException>(() => Nutrient.Created(id, userId, null!));
+        Assert.Throws<ArgumentNullException>(() => Nutrient.Created(id, userId, null!, _timeProvider));
     }
 
     [Fact]
@@ -57,12 +60,18 @@ public class NutrientTests
         NutritionalValue nutritionalValue = NutritionalValue.Created(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1);
-        Nutrient nutrient = Nutrient.Created(id, userId, nutritionalValue);
+        _timeProvider.GetUtcNow().Returns(new DateTimeOffset(2024, 10, 1, 12, 0, 0, TimeSpan.Zero));
 
-        Assert.Null(nutrient.EntityTimeStamp.LastModifiedDate);
+        Nutrient nutrient = Nutrient.Created(id, userId, nutritionalValue, _timeProvider);
+
+        Assert.False(nutrient.EntityTimeStamp.LastModifiedDate.HasValue);
+        Assert.Equal(nutrient.EntityTimeStamp.CreatedDate, new DateTime(2024, 10, 1, 12, 0, 0));
+
+        _timeProvider.GetUtcNow().Returns(new DateTimeOffset(2024, 11, 1, 12, 0, 0, TimeSpan.Zero));
 
         nutrient.EntityTimeStamp.Update();
 
-        Assert.NotNull(nutrient.EntityTimeStamp.LastModifiedDate);
+        Assert.True(nutrient.EntityTimeStamp.LastModifiedDate.HasValue);
+        Assert.Equal(nutrient.EntityTimeStamp.LastModifiedDate, new DateTime(2024, 11, 1, 12, 0, 0));
     }
 }

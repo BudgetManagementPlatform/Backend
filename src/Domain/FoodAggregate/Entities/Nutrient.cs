@@ -16,11 +16,11 @@ public sealed class Nutrient : Entity<Guid>
     /// <param name="nutritionalValue">The nutritional value of the nutrient.</param>
     /// <exception cref="ArgumentException">Thrown when the id or userId is empty.</exception>
     /// <exception cref="ArgumentNullException">Thrown when the nutritionalValue is null.</exception>
-    private Nutrient(Guid id, Guid userId, NutritionalValue nutritionalValue) : base(id)
+    private Nutrient(Guid id, Guid userId, NutritionalValue nutritionalValue, TimeProvider timeProvider) : base(id)
     {
         if (id == Guid.Empty || userId == Guid.Empty) throw new ArgumentException("Id or UserId cannot be empty.");
 
-        EntityTimeStamp = new EntityTimeStamp<Guid>(userId);
+        EntityTimeStamp = new EntityTimeStamp<Guid>(userId, timeProvider);
         NutritionalValue = nutritionalValue ?? throw new ArgumentNullException(nameof(nutritionalValue));
     }
 
@@ -41,8 +41,8 @@ public sealed class Nutrient : Entity<Guid>
     /// <param name="userId">The unique identifier of the user who created the nutrient.</param>
     /// <param name="nutritionalValue">The nutritional value of the nutrient.</param>
     /// <returns>A new instance of the <see cref="Nutrient" /> class.</returns>
-    public static Nutrient Created(Guid id, Guid userId, NutritionalValue nutritionalValue)
+    public static Nutrient Created(Guid id, Guid userId, NutritionalValue nutritionalValue, TimeProvider timeProvider)
     {
-        return new Nutrient(id, userId, nutritionalValue);
+        return new Nutrient(id, userId, nutritionalValue, timeProvider);
     }
 }

@@ -16,6 +16,9 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    // TODO refactor in future
+    builder.Services.AddSingleton<TimeProvider>(TimeProvider.System);
 }
 
 WebApplication app = builder.Build();
@@ -31,7 +34,11 @@ WebApplication app = builder.Build();
         app.UseSwaggerUI();
     }
 
-    // app.MapGet("/", () => { throw new Exception(); }).GetApiConvention<int>();
+    // TODO: remove in future
+    app.MapGet("/time", (TimeProvider timeProvider) => timeProvider.GetUtcNow().UtcDateTime)
+        .WithName("GetCurrentTime")
+        .Produces<DateTime>()
+        .WithTags("Remove");
 
     app.UseHttpsRedirection();
 
