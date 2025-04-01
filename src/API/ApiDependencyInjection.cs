@@ -9,6 +9,9 @@ public static class ApiDependencyInjection
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddProblemDetails();
 
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+
         return services;
     }
 

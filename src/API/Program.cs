@@ -1,24 +1,16 @@
 using System.Reflection;
 using API;
 using API.Extensions;
-using API.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddApi();
 
     // Add services to the container.
-    builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-    builder.Services.AddProblemDetails();
-
     builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
-    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-
     // TODO refactor in future
-    builder.Services.AddSingleton<TimeProvider>(TimeProvider.System);
+    builder.Services.AddSingleton(TimeProvider.System);
 }
 
 WebApplication app = builder.Build();
