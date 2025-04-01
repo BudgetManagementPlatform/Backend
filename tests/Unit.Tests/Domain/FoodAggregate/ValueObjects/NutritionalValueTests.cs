@@ -1,6 +1,6 @@
 using Domain.FoodAggregate.ValueObjects;
 
-namespace Unit.Tests.Domain.FoodAggregate;
+namespace Unit.Tests.Domain.FoodAggregate.ValueObjects;
 
 public class NutritionalValueTests
 {
