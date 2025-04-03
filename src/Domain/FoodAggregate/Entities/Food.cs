@@ -9,6 +9,14 @@ namespace Domain.FoodAggregate.Entities;
 public sealed class Food : Entity<FoodId>
 {
     /// <summary>
+    ///     Initializes a new instance of the <see cref="Food" /> class.
+    ///     This constructor is private to prevent direct instantiation of the <see cref="Food" /> class.
+    /// </summary>
+    private Food()
+    {
+    }
+
+    /// <summary>
     ///     Represents a food entity with various nutritional properties.
     /// </summary>
     private Food(FoodId foodId,

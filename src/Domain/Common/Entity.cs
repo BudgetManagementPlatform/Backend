@@ -9,6 +9,14 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="Entity{TId}" /> class.
+    ///     This constructor is private to prevent direct instantiation of the <see cref="Entity{TId}" /> class.
+    /// </summary>
+    protected Entity()
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Entity{TId}" /> class.
     /// </summary>
     /// <param name="id">The unique identifier.</param>
     protected Entity(TId id)
@@ -19,7 +27,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
     /// <summary>
     ///     Gets or sets the unique identifier of the entity.
     /// </summary>
-    public TId Id { get; protected set; }
+    public TId Id { get; protected set; } = default!;
 
     /// <summary>
     ///     Determines whether the specified entity is equal to the current entity.
